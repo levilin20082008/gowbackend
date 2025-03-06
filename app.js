@@ -67,53 +67,50 @@ app.use(express.json());
 // 用户信息管理 API
 
 // 创建用户
-app.post('/users', (req, res) => {
-  const { username, password } = req.body;
+function createUser(reqBody) {
+  const { username, password } = reqBody;
   if (!username || !password) {
-    return res.status(400).json({ error: 'Username and password are required' });
+    return { status: 400, body: { error: 'Username and password are required' } };
   }
   if (readUserFile(username)) {
-    return res.status(409).json({ error: 'User already exists' });
+    return { status: 409, body: { error: 'User already exists' } };
   }
   const userData = { username, password, wlpoints: 0 };
   writeUserFile(username, userData);
-  res.status(201).json(userData);
-});
+  return { status: 201, body: userData };
+}
 
 // 获取用户信息
-app.get('/users/:username', (req, res) => {
-  const { username } = req.params;
+function getUser(username) {
   const userData = readUserFile(username);
   if (!userData) {
-    return res.status(404).json({ error: 'User not found' });
+    return { status: 404, body: { error: 'User not found' } };
   }
-  res.json(userData);
-});
+  return { status: 200, body: userData };
+}
 
 // 更新用户信息
-app.put('/users/:username', (req, res) => {
-  const { username } = req.params;
+function updateUser(username, reqBody) {
   const userData = readUserFile(username);
   if (!userData) {
-    return res.status(404).json({ error: 'User not found' });
+    return { status: 404, body: { error: 'User not found' } };
   }
-  const updatedData = { ...userData, ...req.body };
+  const updatedData = { ...userData, ...reqBody };
   writeUserFile(username, updatedData);
-  res.json(updatedData);
-});
+  return { status: 200, body: updatedData };
+}
 
 // 删除用户信息
-app.delete('/users/:username', (req, res) => {
-  const { username } = req.params;
+function deleteUser(username) {
   const filePath = path.join(usersDir, `${username}.prop`);
   if (fs.existsSync(filePath)) {
     fs.unlinkSync(filePath);
     delete userCache[username];
-    res.status(204).send();
+    return { status: 204, body: null };
   } else {
-    res.status(404).json({ error: 'User not found' });
+    return { status: 404, body: { error: 'User not found' } };
   }
-});
+}
 
 // 用户登录
 app.post('/api/login', (req, res) => {
@@ -185,19 +182,25 @@ app.use((req, res, next) => {
   }
 });
 
-// 获取用户当前登录状态
-app.get('/users/:username/status', (req, res) => {
-  const { username } = req.params;
-  const token = req.headers['authorization']?.split(' ')[1];
-  if (token && tokenBlacklist.has(token)) {
-    return res.json({ message: 'User is logged out' });
-  }
-  res.json({ message: 'User status check' });
-});
+
+
 
 // 财神信息管理 API
 
 // 获取财神信息
+function getCaishen() {
+  const caishenData = readCaishenFile();
+  return { status: 200, body: caishenData };
+}
+
+// 更新财神信息
+function updateCaishen(reqBody) {
+  const caishenData = readCaishenFile();
+  const updatedData = { ...caishenData, ...reqBody };
+  writeCaishenFile(updatedData);
+  return { status: 200, body: updatedData };
+}
+
 app.get('/caishen', (req, res) => {
   const caishenData = readCaishenFile();
   res.json(caishenData);
@@ -246,6 +249,114 @@ app.post('/api/getwlpoints', (req, res) => {
     res.json({ wlpoints: userData.wlpoints });
   });
 });
+
+app.post('/api/getuser', (req, res) => {
+    const authHeader = req.headers['authorization'];
+    const { walletAddress } = req.body;
+
+    // 检查是否传入了 walletAddress
+    if (!walletAddress) {
+        return res.status(400).json({ error: 'walletAddress is required' });
+    }
+
+    // 检查是否提供了 Authorization 头
+    if (!authHeader) {
+        return res.status(401).json({ error: 'Authorization header is missing' });
+    }
+
+    const token = authHeader.split(' ')[1];
+
+    // 检查 token 是否在黑名单中
+    if (tokenBlacklist.has(token)) {
+        return res.status(401).json({ error: 'Token has been revoked' });
+    }
+
+    // 验证 token
+    jwt.verify(token, secretKey, (err, user) => {
+        if (err) {
+            return res.status(403).json({ error: 'Invalid token' });
+        }
+
+        // 检查 token 中的 walletAddress 是否与传入的一致
+        if (user.walletAddress!== walletAddress) {
+            return res.status(401).json({ error: 'Invalid wallet address in token' });
+        }
+
+        // 读取用户信息
+        const userData = readUserFile(walletAddress);
+
+        if (!userData) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        // 返回用户的所有信息
+        res.json(userData);
+    });
+});
+
+
+app.post('/api/userBurnCenser', (req, res) => {
+    const authHeader = req.headers['authorization'];
+    const { walletAddress } = req.body;
+
+    // 检查是否传入了 walletAddress
+    if (!walletAddress) {
+        return res.status(400).json({ success: false, error: 'walletAddress is required' });
+    }
+
+    // 检查是否提供了 Authorization 头
+    if (!authHeader) {
+        return res.status(401).json({ success: false, error: 'Authorization header is missing' });
+    }
+
+    const token = authHeader.split(' ')[1];
+
+    // 检查 token 是否在黑名单中
+    if (tokenBlacklist.has(token)) {
+        return res.status(401).json({ success: false, error: 'Token has been revoked' });
+    }
+
+    // 验证 token
+    jwt.verify(token, secretKey, (err, user) => {
+        if (err) {
+            return res.status(403).json({ success: false, error: 'Invalid token' });
+        }
+
+        // 检查 token 中的 walletAddress 是否与传入的一致
+        if (user.walletAddress!== walletAddress) {
+            return res.status(401).json({ success: false, error: 'Invalid wallet address in token' });
+        }
+
+        // 获取用户信息
+        const userData = readUserFile(walletAddress);
+
+        if (!userData) {
+            return res.status(404).json({ success: false, error: 'User not found' });
+        }
+
+        const timestamp = Date.now();
+        if (!userData.lastBurnTime) {
+            userData.lastBurnTime = timestamp;
+            userData.wlpoints = (parseInt(userData.wlpoints) || 0) + 100;
+            writeUserFile(walletAddress, userData);
+            return res.json({ success: true, message: 'Successfully burned censer. Your wlpoints have been increased by 100.', wlpoints: userData.wlpoints });
+        }
+
+        const twoHoursInMillis = 2 * 60 * 60 * 1000;
+        if (timestamp - userData.lastBurnTime >= twoHoursInMillis) {
+            userData.wlpoints = (parseInt(userData.wlpoints) || 0) + 100;
+            userData.lastBurnTime = timestamp;
+            writeUserFile(walletAddress, userData);
+            return res.json({ success: true, message: 'Successfully burned censer. Your wlpoints have been increased by 100.', wlpoints: userData.wlpoints });
+        } else {
+            return res.status(400).json({ success: false, error: 'You can only burn the censer once every two hours.' });
+        }
+    });
+});
+
+
+
+
 
 // 启动服务器
 app.listen(port, () => {
