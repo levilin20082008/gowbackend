@@ -1,2 +1,315 @@
+/Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/app.js:598
+const storage = multer.diskStorage({
+      ^
+
+SyntaxError: Identifier 'storage' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1512:18)
+    at Module._compile (node:internal/modules/cjs/loader:1534:20)
+    at Object..js (node:internal/modules/cjs/loader:1699:10)
+    at Module.load (node:internal/modules/cjs/loader:1313:32)
+    at Function._load (node:internal/modules/cjs/loader:1123:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:217:24)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)
+    at node:internal/main/run_main_module:36:49
+
+Node.js v22.13.1
+/Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/app.js:103
+const upload = multer({
+      ^
+
+SyntaxError: Identifier 'upload' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1512:18)
+    at Module._compile (node:internal/modules/cjs/loader:1534:20)
+    at Object..js (node:internal/modules/cjs/loader:1699:10)
+    at Module.load (node:internal/modules/cjs/loader:1313:32)
+    at Function._load (node:internal/modules/cjs/loader:1123:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:217:24)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)
+    at node:internal/main/run_main_module:36:49
+
+Node.js v22.13.1
+/Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/app.js:649
+const storage = multer.diskStorage({
+      ^
+
+SyntaxError: Identifier 'storage' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1512:18)
+    at Module._compile (node:internal/modules/cjs/loader:1534:20)
+    at Object..js (node:internal/modules/cjs/loader:1699:10)
+    at Module.load (node:internal/modules/cjs/loader:1313:32)
+    at Function._load (node:internal/modules/cjs/loader:1123:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:217:24)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)
+    at node:internal/main/run_main_module:36:49
+
+Node.js v22.13.1
 Server is running on port 3020
 Server is running on port 3020
+User 9e920977fb7b7876cac88c5dde80d056 not found, creating new user...
+User aa07421b101f1c05113df124f31298c2 not found, creating new user...
+User 40f2a49379754629df82e48663ac1cd0 not found, creating new user...
+User a60c963f28d5cda40776be1ff362bbf2 not found, creating new user...
+User a60c963f28d5cda40776be1ff362bbf2 not found, creating new user...
+Server is running on port 3020
+Server is running on port 3020
+User fc71705f5f13105527db9a67d6c13b00 not found, creating new user...
+User a60c963f28d5cda40776be1ff362bbf2 not found, creating new user...
+User fc71705f5f13105527db9a67d6c13b00 not found, creating new user...
+User 9e920977fb7b7876cac88c5dde80d056 not found, creating new user...
+User a60c963f28d5cda40776be1ff362bbf2 not found, creating new user...
+Server is running on port 3020
+User fc71705f5f13105527db9a67d6c13b00 not found, creating new user...
+User 3ce7b09adae07efa632525af67dab3e4 not found, creating new user...
+User aa07421b101f1c05113df124f31298c2 not found, creating new user...
+Server is running on port 3020
+Server is running on port 3020
+User fc71705f5f13105527db9a67d6c13b00 not found, creating new user...
+Server is running on port 3020
+Server is running on port 3020
+Server is running on port 3020
+[UPDATE_USER_FACE] 收到更新头像请求，开始处理
+[UPDATE_USER_FACE] 获取到userId: fc71705f5f13105527db9a67d6c13b00
+[UPDATE_USER_FACE] 文件上传成功，原始文件名: figer2.jpg, 存储路径: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 用户目录: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00, 属性文件: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/user.prop
+[UPDATE_USER_FACE] 用户已存在，读取用户属性文件
+[UPDATE_USER_FACE] 成功读取用户属性，当前头像路径: /wencaishen/head.png
+[UPDATE_USER_FACE] 更新用户头像路径，旧路径: /wencaishen/head.png
+[UPDATE_USER_FACE] 更新后头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 准备保存更新后的用户信息
+[UPDATE_USER_FACE] 用户信息保存成功
+[UPDATE_USER_FACE] 头像更新流程完成，最终头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 收到更新头像请求，开始处理
+[UPDATE_USER_FACE] 获取到userId: a60c963f28d5cda40776be1ff362bbf2
+[UPDATE_USER_FACE] 文件上传成功，原始文件名: FRAMEFRAME.png, 存储路径: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/a60c963f28d5cda40776be1ff362bbf2/avatar.png
+[UPDATE_USER_FACE] 用户目录: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/a60c963f28d5cda40776be1ff362bbf2, 属性文件: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/a60c963f28d5cda40776be1ff362bbf2/user.prop
+[UPDATE_USER_FACE] 用户已存在，读取用户属性文件
+[UPDATE_USER_FACE] 成功读取用户属性，当前头像路径: /wencaishen/head.png
+[UPDATE_USER_FACE] 更新用户头像路径，旧路径: /wencaishen/head.png
+[UPDATE_USER_FACE] 更新后头像路径: /wencaishen/userinfo/a60c963f28d5cda40776be1ff362bbf2/avatar.png
+[UPDATE_USER_FACE] 准备保存更新后的用户信息
+[UPDATE_USER_FACE] 用户信息保存成功
+[UPDATE_USER_FACE] 头像更新流程完成，最终头像路径: /wencaishen/userinfo/a60c963f28d5cda40776be1ff362bbf2/avatar.png
+[UPDATE_USER_FACE] 收到更新头像请求，开始处理
+[UPDATE_USER_FACE] 获取到userId: 3ce7b09adae07efa632525af67dab3e4
+[UPDATE_USER_FACE] 文件上传成功，原始文件名: IMG_20250525_183320.jpg, 存储路径: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/3ce7b09adae07efa632525af67dab3e4/avatar.png
+[UPDATE_USER_FACE] 用户目录: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/3ce7b09adae07efa632525af67dab3e4, 属性文件: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/3ce7b09adae07efa632525af67dab3e4/user.prop
+[UPDATE_USER_FACE] 用户已存在，读取用户属性文件
+[UPDATE_USER_FACE] 成功读取用户属性，当前头像路径: /wencaishen/head.png
+[UPDATE_USER_FACE] 更新用户头像路径，旧路径: /wencaishen/head.png
+[UPDATE_USER_FACE] 更新后头像路径: /wencaishen/userinfo/3ce7b09adae07efa632525af67dab3e4/avatar.png
+[UPDATE_USER_FACE] 准备保存更新后的用户信息
+[UPDATE_USER_FACE] 用户信息保存成功
+[UPDATE_USER_FACE] 头像更新流程完成，最终头像路径: /wencaishen/userinfo/3ce7b09adae07efa632525af67dab3e4/avatar.png
+[UPDATE_USER_FACE] 收到更新头像请求，开始处理
+[UPDATE_USER_FACE] 获取到userId: aa07421b101f1c05113df124f31298c2
+[UPDATE_USER_FACE] 文件上传成功，原始文件名: IMG_6671.jpeg, 存储路径: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/aa07421b101f1c05113df124f31298c2/avatar.png
+[UPDATE_USER_FACE] 用户目录: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/aa07421b101f1c05113df124f31298c2, 属性文件: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/aa07421b101f1c05113df124f31298c2/user.prop
+[UPDATE_USER_FACE] 用户已存在，读取用户属性文件
+[UPDATE_USER_FACE] 成功读取用户属性，当前头像路径: /wencaishen/head.png
+[UPDATE_USER_FACE] 更新用户头像路径，旧路径: /wencaishen/head.png
+[UPDATE_USER_FACE] 更新后头像路径: /wencaishen/userinfo/aa07421b101f1c05113df124f31298c2/avatar.png
+[UPDATE_USER_FACE] 准备保存更新后的用户信息
+[UPDATE_USER_FACE] 用户信息保存成功
+[UPDATE_USER_FACE] 头像更新流程完成，最终头像路径: /wencaishen/userinfo/aa07421b101f1c05113df124f31298c2/avatar.png
+Server is running on port 3020
+[UPDATE_USER_FACE] 收到更新头像请求，开始处理
+[UPDATE_USER_FACE] 获取到userId: fc71705f5f13105527db9a67d6c13b00
+[UPDATE_USER_FACE] 文件上传成功，原始文件名: cat.jpeg, 存储路径: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 用户目录: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00, 属性文件: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/user.prop
+[UPDATE_USER_FACE] 用户已存在，读取用户属性文件
+[UPDATE_USER_FACE] 成功读取用户属性，当前头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 更新用户头像路径，旧路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 更新后头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 准备保存更新后的用户信息
+[UPDATE_USER_FACE] 用户信息保存成功
+[UPDATE_USER_FACE] 头像更新流程完成，最终头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 收到更新头像请求，开始处理
+[UPDATE_USER_FACE] 获取到userId: fc71705f5f13105527db9a67d6c13b00
+[UPDATE_USER_FACE] 文件上传成功，原始文件名: figer2.jpg, 存储路径: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 用户目录: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00, 属性文件: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/user.prop
+[UPDATE_USER_FACE] 用户已存在，读取用户属性文件
+[UPDATE_USER_FACE] 成功读取用户属性，当前头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 更新用户头像路径，旧路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 更新后头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 准备保存更新后的用户信息
+[UPDATE_USER_FACE] 用户信息保存成功
+[UPDATE_USER_FACE] 头像更新流程完成，最终头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 收到更新头像请求，开始处理
+[UPDATE_USER_FACE] 获取到userId: fc71705f5f13105527db9a67d6c13b00
+[UPDATE_USER_FACE] 文件上传成功，原始文件名: cat.jpeg, 存储路径: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 用户目录: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00, 属性文件: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/user.prop
+[UPDATE_USER_FACE] 用户已存在，读取用户属性文件
+[UPDATE_USER_FACE] 成功读取用户属性，当前头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 更新用户头像路径，旧路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 更新后头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 准备保存更新后的用户信息
+[UPDATE_USER_FACE] 用户信息保存成功
+[UPDATE_USER_FACE] 头像更新流程完成，最终头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 收到更新头像请求，开始处理
+[UPDATE_USER_FACE] 获取到userId: fc71705f5f13105527db9a67d6c13b00
+[UPDATE_USER_FACE] 文件上传成功，原始文件名: figer1.jpg, 存储路径: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 用户目录: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00, 属性文件: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/user.prop
+[UPDATE_USER_FACE] 用户已存在，读取用户属性文件
+[UPDATE_USER_FACE] 成功读取用户属性，当前头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 更新用户头像路径，旧路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 更新后头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 准备保存更新后的用户信息
+[UPDATE_USER_FACE] 用户信息保存成功
+[UPDATE_USER_FACE] 头像更新流程完成，最终头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 收到更新头像请求，开始处理
+[UPDATE_USER_FACE] 获取到userId: fc71705f5f13105527db9a67d6c13b00
+[UPDATE_USER_FACE] 文件上传成功，原始文件名: cat.jpeg, 存储路径: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 用户目录: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00, 属性文件: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/user.prop
+[UPDATE_USER_FACE] 用户已存在，读取用户属性文件
+[UPDATE_USER_FACE] 成功读取用户属性，当前头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 更新用户头像路径，旧路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 更新后头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 准备保存更新后的用户信息
+[UPDATE_USER_FACE] 用户信息保存成功
+[UPDATE_USER_FACE] 头像更新流程完成，最终头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 收到更新头像请求，开始处理
+[UPDATE_USER_FACE] 获取到userId: fc71705f5f13105527db9a67d6c13b00
+[UPDATE_USER_FACE] 文件上传成功，原始文件名: figer1.jpg, 存储路径: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 用户目录: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00, 属性文件: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/user.prop
+[UPDATE_USER_FACE] 用户已存在，读取用户属性文件
+[UPDATE_USER_FACE] 成功读取用户属性，当前头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 更新用户头像路径，旧路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 更新后头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 准备保存更新后的用户信息
+[UPDATE_USER_FACE] 用户信息保存成功
+[UPDATE_USER_FACE] 头像更新流程完成，最终头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 收到更新头像请求，开始处理
+[UPDATE_USER_FACE] 获取到userId: fc71705f5f13105527db9a67d6c13b00
+[UPDATE_USER_FACE] 文件上传成功，原始文件名: cat.jpeg, 存储路径: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 用户目录: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00, 属性文件: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/user.prop
+[UPDATE_USER_FACE] 用户已存在，读取用户属性文件
+[UPDATE_USER_FACE] 成功读取用户属性，当前头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 更新用户头像路径，旧路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 更新后头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 准备保存更新后的用户信息
+[UPDATE_USER_FACE] 用户信息保存成功
+[UPDATE_USER_FACE] 头像更新流程完成，最终头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 收到更新头像请求，开始处理
+[UPDATE_USER_FACE] 获取到userId: fc71705f5f13105527db9a67d6c13b00
+[UPDATE_USER_FACE] 文件上传成功，原始文件名: figer2.jpg, 存储路径: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 用户目录: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00, 属性文件: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/user.prop
+[UPDATE_USER_FACE] 用户已存在，读取用户属性文件
+[UPDATE_USER_FACE] 成功读取用户属性，当前头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 更新用户头像路径，旧路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 更新后头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 准备保存更新后的用户信息
+[UPDATE_USER_FACE] 用户信息保存成功
+[UPDATE_USER_FACE] 头像更新流程完成，最终头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 收到更新头像请求，开始处理
+[UPDATE_USER_FACE] 获取到userId: fc71705f5f13105527db9a67d6c13b00
+[UPDATE_USER_FACE] 文件上传成功，原始文件名: cat.jpeg, 存储路径: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 用户目录: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00, 属性文件: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/user.prop
+[UPDATE_USER_FACE] 用户已存在，读取用户属性文件
+[UPDATE_USER_FACE] 成功读取用户属性，当前头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 更新用户头像路径，旧路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 更新后头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 准备保存更新后的用户信息
+[UPDATE_USER_FACE] 用户信息保存成功
+[UPDATE_USER_FACE] 头像更新流程完成，最终头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 收到更新头像请求，开始处理
+[UPDATE_USER_FACE] 获取到userId: fc71705f5f13105527db9a67d6c13b00
+[UPDATE_USER_FACE] 文件上传成功，原始文件名: figer2.jpg, 存储路径: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 用户目录: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00, 属性文件: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/user.prop
+[UPDATE_USER_FACE] 用户已存在，读取用户属性文件
+[UPDATE_USER_FACE] 成功读取用户属性，当前头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 更新用户头像路径，旧路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 更新后头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 准备保存更新后的用户信息
+[UPDATE_USER_FACE] 用户信息保存成功
+[UPDATE_USER_FACE] 头像更新流程完成，最终头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 收到更新头像请求，开始处理
+[UPDATE_USER_FACE] 获取到userId: fc71705f5f13105527db9a67d6c13b00
+[UPDATE_USER_FACE] 文件上传成功，原始文件名: depositphotos_70363963-stock-illustration-close-button-icon.jpg, 存储路径: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 用户目录: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00, 属性文件: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/user.prop
+[UPDATE_USER_FACE] 用户已存在，读取用户属性文件
+[UPDATE_USER_FACE] 成功读取用户属性，当前头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 更新用户头像路径，旧路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 更新后头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 准备保存更新后的用户信息
+[UPDATE_USER_FACE] 用户信息保存成功
+[UPDATE_USER_FACE] 头像更新流程完成，最终头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+User undefined not found, creating new user...
+[UPDATE_USER_FACE] 收到更新头像请求，开始处理
+[UPDATE_USER_FACE] 获取到userId: fc71705f5f13105527db9a67d6c13b00
+[UPDATE_USER_FACE] 文件上传成功，原始文件名: figer2.jpg, 存储路径: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 用户目录: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00, 属性文件: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/user.prop
+[UPDATE_USER_FACE] 用户已存在，读取用户属性文件
+[UPDATE_USER_FACE] 成功读取用户属性，当前头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 更新用户头像路径，旧路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 更新后头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 准备保存更新后的用户信息
+[UPDATE_USER_FACE] 用户信息保存成功
+[UPDATE_USER_FACE] 头像更新流程完成，最终头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 收到更新头像请求，开始处理
+[UPDATE_USER_FACE] 获取到userId: fc71705f5f13105527db9a67d6c13b00
+[UPDATE_USER_FACE] 文件上传成功，原始文件名: figer2.jpg, 存储路径: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 用户目录: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00, 属性文件: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/user.prop
+[UPDATE_USER_FACE] 用户已存在，读取用户属性文件
+[UPDATE_USER_FACE] 成功读取用户属性，当前头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 更新用户头像路径，旧路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 更新后头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 准备保存更新后的用户信息
+[UPDATE_USER_FACE] 用户信息保存成功
+[UPDATE_USER_FACE] 头像更新流程完成，最终头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 收到更新头像请求，开始处理
+[UPDATE_USER_FACE] 获取到userId: fc71705f5f13105527db9a67d6c13b00
+[UPDATE_USER_FACE] 文件上传成功，原始文件名: å°èæ¯è²è°æ¹æäº®éè².png, 存储路径: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 用户目录: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00, 属性文件: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/user.prop
+[UPDATE_USER_FACE] 用户已存在，读取用户属性文件
+[UPDATE_USER_FACE] 成功读取用户属性，当前头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 更新用户头像路径，旧路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 更新后头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 准备保存更新后的用户信息
+[UPDATE_USER_FACE] 用户信息保存成功
+[UPDATE_USER_FACE] 头像更新流程完成，最终头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 收到更新头像请求，开始处理
+[UPDATE_USER_FACE] 获取到userId: fc71705f5f13105527db9a67d6c13b00
+[UPDATE_USER_FACE] 文件上传成功，原始文件名: å°èæ¯è²è°æ¹æäº®éè².png, 存储路径: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 用户目录: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00, 属性文件: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/user.prop
+[UPDATE_USER_FACE] 用户已存在，读取用户属性文件
+[UPDATE_USER_FACE] 成功读取用户属性，当前头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 更新用户头像路径，旧路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 更新后头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 准备保存更新后的用户信息
+[UPDATE_USER_FACE] 用户信息保存成功
+[UPDATE_USER_FACE] 头像更新流程完成，最终头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 收到更新头像请求，开始处理
+[UPDATE_USER_FACE] 获取到userId: fc71705f5f13105527db9a67d6c13b00
+[UPDATE_USER_FACE] 文件上传成功，原始文件名: cat.jpeg, 存储路径: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 用户目录: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00, 属性文件: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/user.prop
+[UPDATE_USER_FACE] 用户已存在，读取用户属性文件
+[UPDATE_USER_FACE] 成功读取用户属性，当前头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 更新用户头像路径，旧路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 更新后头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 准备保存更新后的用户信息
+[UPDATE_USER_FACE] 用户信息保存成功
+[UPDATE_USER_FACE] 头像更新流程完成，最终头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 收到更新头像请求，开始处理
+[UPDATE_USER_FACE] 获取到userId: fc71705f5f13105527db9a67d6c13b00
+[UPDATE_USER_FACE] 文件上传成功，原始文件名: head.png, 存储路径: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 用户目录: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00, 属性文件: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/user.prop
+[UPDATE_USER_FACE] 用户已存在，读取用户属性文件
+[UPDATE_USER_FACE] 成功读取用户属性，当前头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 更新用户头像路径，旧路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 更新后头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+[UPDATE_USER_FACE] 准备保存更新后的用户信息
+[UPDATE_USER_FACE] 用户信息保存成功
+[UPDATE_USER_FACE] 头像更新流程完成，最终头像路径: /wencaishen/userinfo/fc71705f5f13105527db9a67d6c13b00/avatar.png
+Server is running on port 3020
+User undefined not found, creating new user...
+User TEMP_USER_1760668819887 not found, creating new user...
+User fc71705f5f13105527db9a67d6c13b00 not found, creating new user...
+User TEMP_USER_1760705374463 not found, creating new user...
+User 4a672c868caebf1ed1df797ebe0baf9d not found, creating new user...
+User f98ced72cf5466d965d7210d45f4ebc8 not found, creating new user...
+User bd875a76ffea4880794b8343f216615c not found, creating new user...
+User bd875a76ffea4880794b8343f216615c not found, creating new user...
+User 3e0a77f6d88eb9c178ac5d8de8c52556 not found, creating new user...
