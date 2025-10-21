@@ -8,7 +8,7 @@ const ethUtil = require('ethereumjs-util');
 const cors = require('cors');
 const axios = require('axios'); // 添加axios导入
 const app = express();
-const port = 3020;
+const port = 80;
 const usersDir = path.join(__dirname, 'users');
 const caishenDir = path.join(__dirname, 'caishen');
 const caishenFilePath = path.join(caishenDir, 'caishen.properties');
@@ -122,7 +122,39 @@ const avatarUpload = multer({
 
 
 
-app.use(cors());
+// 添加OPTIONS请求处理中间件
+// 自定义CORS中间件 - 更直接、更可靠的实现方式
+app.use((req, res, next) => {
+  // 允许所有来源
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  
+  // 允许的HTTP方法
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+  
+  // 允许的请求头
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
+  
+  // 允许凭证(Cookie等)
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  
+  // 暴露额外的响应头
+  res.setHeader('Access-Control-Expose-Headers', 'Access-Control-Allow-Origin');
+  
+  // 预检请求缓存时间(秒)
+  res.setHeader('Access-Control-Max-Age', '86400');
+  
+  // 处理预检请求
+  if (req.method === 'OPTIONS') {
+    // 对于OPTIONS请求，直接返回200状态码
+    return res.status(200).end();
+  }
+  
+  next();
+});
+
+// 移除下面这行，因为我们的自定义中间件已经处理了OPTIONS请求
+// app.options('*', cors());
+
 
 // 缓存用户信息
 const userCache = {};
@@ -382,7 +414,8 @@ app.get('/getuser', async (req, res) => {
       username: userData.username,
       // 检查userface是否存在或为空字符串，如果是则使用默认头像
       userface: userData.userface && userData.userface.trim() !== '' ? userData.userface : '/wencaishen/head.png',
-      // 可以根据需要添加其他用户属性
+      // 功德分
+      gpoint: userData.gpoint || 0,
     };
     
     return res.json({ success: true, data: completeUserInfo });
@@ -425,7 +458,7 @@ app.post('/api/userBurnCenser', (req, res) => {
         }
 
         // 读取用户信息
-        const userData = readUserFile(walletAddress);
+const userData = readUserFile(walletAddress);
 
         if (!userData) {
             return res.status(404).json({ error: 'User not found' });
@@ -661,12 +694,19 @@ const avatarStorageConfig = multer.diskStorage({
 // 添加/updateUserFace API接口
 // 创建新的multer实例使用重命名后的avatarStorageConfig
 const faceUpload = multer({ storage: avatarStorageConfig });
-app.post('/updateUserFace', faceUpload.single('avatar'), async (req, res) => {
-  try {
-    // 步骤1: 从URL查询参数中获取userId
-    console.log(`[UPDATE_USER_FACE] 收到更新头像请求，开始处理`);
-    const userId = req.query.userId;
-    console.log(`[UPDATE_USER_FACE] 获取到userId: ${userId}`);
+// 修改/updateUserFace接口实现
+app.post('/updateUserFace', (req, res, next) => {
+// 先确保CORS头被设置
+res.setHeader('Access-Control-Allow-Origin', '*');
+res.setHeader('Access-Control-Allow-Credentials', 'true');
+next();
+}, faceUpload.single('avatar'), async (req, res) => {
+// 原有的/updateUserFace接口实现代码保持不变
+try {
+// 步骤1: 从URL查询参数中获取userId
+console.log(`[UPDATE_USER_FACE] 收到更新头像请求，开始处理`);
+const userId = req.query.userId;
+console.log(`[UPDATE_USER_FACE] 获取到userId: ${userId}`);
     
     // 步骤2: 验证请求参数
     if (!userId) {
@@ -801,4 +841,13 @@ app.post('/updateUser', async (req, res) => {
     console.error('Error updating user information:', error);
     return res.status(500).json({ success: false, error: 'Internal server error' });
   }
+});
+
+// 添加在app.listen之前
+app.get('/test-cors', (req, res) => {
+  res.json({
+    success: true,
+    message: 'CORS configuration test successful',
+    timestamp: new Date().toISOString()
+  });
 });

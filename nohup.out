@@ -313,3 +313,51 @@ User f98ced72cf5466d965d7210d45f4ebc8 not found, creating new user...
 User bd875a76ffea4880794b8343f216615c not found, creating new user...
 User bd875a76ffea4880794b8343f216615c not found, creating new user...
 User 3e0a77f6d88eb9c178ac5d8de8c52556 not found, creating new user...
+User f98ced72cf5466d965d7210d45f4ebc8 not found, creating new user...
+User bd875a76ffea4880794b8343f216615c not found, creating new user...
+User bd875a76ffea4880794b8343f216615c not found, creating new user...
+[UPDATE_USER_FACE] 收到更新头像请求，开始处理
+[UPDATE_USER_FACE] 获取到userId: bd875a76ffea4880794b8343f216615c
+[UPDATE_USER_FACE] 文件上传成功，原始文件名: 67aa403a4cab676541a0439255052ee6.jpeg, 存储路径: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/bd875a76ffea4880794b8343f216615c/avatar.png
+[UPDATE_USER_FACE] 用户目录: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/bd875a76ffea4880794b8343f216615c, 属性文件: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/bd875a76ffea4880794b8343f216615c/user.prop
+[UPDATE_USER_FACE] 用户已存在，读取用户属性文件
+[UPDATE_USER_FACE] 成功读取用户属性，当前头像路径: /wencaishen/head.png
+[UPDATE_USER_FACE] 更新用户头像路径，旧路径: /wencaishen/head.png
+[UPDATE_USER_FACE] 更新后头像路径: /wencaishen/userinfo/bd875a76ffea4880794b8343f216615c/avatar.png
+[UPDATE_USER_FACE] 准备保存更新后的用户信息
+[UPDATE_USER_FACE] 用户信息保存成功
+[UPDATE_USER_FACE] 头像更新流程完成，最终头像路径: /wencaishen/userinfo/bd875a76ffea4880794b8343f216615c/avatar.png
+node:events:502
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::3020
+    at Server.setupListenHandle [as _listen2] (node:net:1937:16)
+    at listenInCluster (node:net:1994:12)
+    at Server.listen (node:net:2099:7)
+    at Function.listen (/Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/node_modules/express/lib/application.js:635:24)
+    at Object.<anonymous> (/Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/app.js:745:5)
+    at Module._compile (node:internal/modules/cjs/loader:1562:14)
+    at Object..js (node:internal/modules/cjs/loader:1699:10)
+    at Module.load (node:internal/modules/cjs/loader:1313:32)
+    at Function._load (node:internal/modules/cjs/loader:1123:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1973:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  code: 'EADDRINUSE',
+  errno: -48,
+  syscall: 'listen',
+  address: '::',
+  port: 3020
+}
+
+Node.js v22.13.1
+Server is running on port 3020
+User 3cbacffdfc2d5f4ff9d84717a101c19a not found, creating new user...
+User df4d9139d0e24e44134ff736e084311e not found, creating new user...
+User d7285470d55e6c59aa3abc64ff108374 not found, creating new user...
+User d7285470d55e6c59aa3abc64ff108374 not found, creating new user...
+User fc71705f5f13105527db9a67d6c13b00 not found, creating new user...
+User f5e97a33a1bba708a0cf55836dd4fb8d not found, creating new user...
+User e39661468b8fed4e3d5f608984da7335 not found, creating new user...
