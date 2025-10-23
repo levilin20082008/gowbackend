@@ -361,3 +361,25 @@ User d7285470d55e6c59aa3abc64ff108374 not found, creating new user...
 User fc71705f5f13105527db9a67d6c13b00 not found, creating new user...
 User f5e97a33a1bba708a0cf55836dd4fb8d not found, creating new user...
 User e39661468b8fed4e3d5f608984da7335 not found, creating new user...
+Server is running on port 80
+[UPDATE_USER_FACE] 收到更新头像请求，开始处理
+[UPDATE_USER_FACE] 获取到userId: testuser
+[UPDATE_USER_FACE] 文件上传成功，原始文件名: wishbox.png, 存储路径: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/testuser/avatar.png
+[UPDATE_USER_FACE] 用户目录: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/testuser, 属性文件: /Users/levilin2008/Library/Mobile Documents/com~apple~CloudDocs/GIT/WORKING/全新佛法/Lin.Taochanter(Veda Master)/caishen/gowbackend/wencaishen/userinfo/testuser/user.prop
+[UPDATE_USER_FACE] 用户已存在，读取用户属性文件
+[UPDATE_USER_FACE] 成功读取用户属性，当前头像路径: /wencaishen/head.png
+[UPDATE_USER_FACE] 更新用户头像路径，旧路径: /wencaishen/head.png
+[UPDATE_USER_FACE] 更新后头像路径: /wencaishen/userinfo/testuser/avatar.png
+[UPDATE_USER_FACE] 准备保存更新后的用户信息
+[UPDATE_USER_FACE] 用户信息保存成功
+[UPDATE_USER_FACE] 头像更新流程完成，最终头像路径: /wencaishen/userinfo/testuser/avatar.png
+Server is running on port 80
+[LOG_CENSER] Log entry added successfully
+Server is running on port 80
+[LOG_CENSER] Log entry added successfully
+[LOG_CENSER] Log entry added successfully
+[LOG_CENSER] Log entry added successfully
+[LOG_CENSER] Log entry added successfully
+Server is running on port 80
+Server is running on port 80
+Server is running on port 80

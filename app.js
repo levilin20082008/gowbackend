@@ -383,6 +383,122 @@ const token = authHeader.split(' ')[1];
   });
 });
 
+// 在app.listen之前添加以下代码（大约在第800行左右）
+
+
+// 添加/getLastCenserLog API接口
+app.get('/getLastCenserLog', async (req, res) => {
+  try {
+    // 从查询参数中获取num参数，默认为3条
+    let num = parseInt(req.query.num, 3);
+    
+    // 验证num参数
+    if (isNaN(num) || num <= 0) {
+      num = 3; // 默认返回3条
+    } else if (num > 1000) {
+      // 限制最大返回条数，防止性能问题
+      return res.status(400).json({
+        success: false,
+        error: 'Number of logs requested cannot exceed 1000'
+      });
+    }
+    
+    // 定义日志文件路径
+    const logsDir = path.join(wencaishenDir, 'logs');
+    const logFilePath = path.join(logsDir, 'censer.log');
+    
+    // 检查日志文件是否存在
+    if (!fs.existsSync(logFilePath)) {
+      return res.json({
+        success: true,
+        logs: [],
+        message: 'Log file does not exist'
+      });
+    }
+    
+    // 读取日志文件内容
+    const logContent = fs.readFileSync(logFilePath, 'utf8');
+    
+    // 按行分割日志，过滤空行
+    let lines = logContent.split('\n').filter(line => line.trim() !== '');
+    
+    // 获取最后num条日志
+    const lastLines = lines.slice(-num);
+    
+    // 去除每条日志中的时间戳信息（格式：[timestamp] message）
+    const processedLogs = lastLines.map(line => {
+      // 使用正则表达式匹配并移除时间戳
+      const match = line.match(/^\[(.*?)\]\s*(.*)$/);
+      if (match && match[2]) {
+        return match[2]; // 返回去除时间戳后的日志内容
+      }
+      return line; // 如果格式不符合预期，返回原始行
+    });
+    
+    // 返回处理后的日志数组
+    return res.json({
+      success: true,
+      logs: processedLogs,
+      total: processedLogs.length,
+      requested: num
+    });
+  } catch (error) {
+    console.error('[GET_LAST_CENSER_LOG] Error reading log file:', error);
+    return res.status(500).json({
+      success: false,
+      error: error.message || 'Internal server error'
+    });
+  }
+});
+
+
+// 添加/logCenser API接口
+app.post('/logCenser', async (req, res) => {
+  try {
+    // 从请求体中获取log参数
+    const { log } = req.body;
+    
+    // 验证请求参数
+    if (!log || typeof log !== 'string') {
+      return res.status(400).json({
+        success: false,
+        error: 'log parameter is required and must be a string'
+      });
+    }
+    
+    // 定义日志文件路径
+    const logsDir = path.join(wencaishenDir, 'logs');
+    const logFilePath = path.join(logsDir, 'censer.log');
+    
+    // 确保logs目录存在
+    if (!fs.existsSync(logsDir)) {
+      fs.mkdirSync(logsDir, { recursive: true });
+      console.log(`[LOG_CENSER] Created logs directory: ${logsDir}`);
+    }
+    
+    // 格式化日志条目，添加时间戳
+    const timestamp = new Date().toISOString();
+    const logEntry = `[${timestamp}] ${log}\n`;
+    
+    // 将日志追加到文件
+    fs.appendFileSync(logFilePath, logEntry, 'utf8');
+    console.log(`[LOG_CENSER] Log entry added successfully`);
+    
+    // 返回成功响应
+    return res.json({
+      success: true,
+      message: 'Log entry added successfully',
+      logLength: log.length
+    });
+  } catch (error) {
+    console.error(`[LOG_CENSER] Error writing log:`, error);
+    return res.status(500).json({
+      success: false,
+      error: error.message || 'Internal server error'
+    });
+  }
+});
+
 // 添加/getuser API接口
 app.get('/getuser', async (req, res) => {
   const { userId } = req.query;
