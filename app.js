@@ -541,6 +541,48 @@ return res.status(500).json({ success: false, error: 'Internal server error' });
   }
 });
 
+// 添加/getExistUser API接口
+app.get('/getExistUser', async (req, res) => {
+  const { userId } = req.query;
+  
+  // 验证请求参数
+  if (!userId) {
+    return res.status(400).json({ success: false, error: 'userId is required' });
+  }
+  
+  try {
+    const userDir = path.join(wencaishenUserInfoDir, userId);
+    const userPropFile = path.join(userDir, 'user.prop');
+    
+    // 检查用户是否存在
+    if (!fs.existsSync(userPropFile)) {
+      // 如果用户不存在，返回错误信息
+      return res.status(404).json({ success: false, error: 'User not found' });
+    }
+    
+    // 读取用户属性文件
+    const data = fs.readFileSync(userPropFile, 'utf8');
+    const userData = properties.parse(data);
+    
+    // 创建完整的用户信息对象
+    // 第395行左右：在getuser接口中添加userface检查逻辑
+    const completeUserInfo = {
+      userId: userId,
+      username: userData.username,
+      // 检查userface是否存在或为空字符串，如果是则使用默认头像
+      userface: userData.userface && userData.userface.trim() !== '' ? userData.userface : '/wencaishen/head.png',
+      // 功德分
+      gpoint: userData.gpoint || 0,
+    };
+    
+    return res.json({ success: true, data: completeUserInfo });
+} catch (error) {
+    console.error('Error getting user information:', error);
+return res.status(500).json({ success: false, error: 'Internal server error' });
+  }
+});
+
+
 
 app.post('/api/userBurnCenser', (req, res) => {
     const authHeader = req.headers['authorization'];
@@ -556,7 +598,7 @@ app.post('/api/userBurnCenser', (req, res) => {
         return res.status(401).json({ success: false, error: 'Authorization header is missing' });
     }
 
-    const token = authHeader.split(' ')[1];
+const token = authHeader.split(' ')[1];
 
     // 检查 token 是否在黑名单中
     if (tokenBlacklist.has(token)) {
@@ -744,7 +786,7 @@ async function createWenCaishenUser(userId) {
   const userData = {
     username: username,
     // 修改为指向wencaishen目录的head.png
-    userface: '/wencaishen/head.png'
+    // userface: '/wencaishen/head.png'
   };
   
   const data = properties.stringify(userData);
@@ -762,7 +804,7 @@ app.post('/createuser', async (req, res) => {
     return res.status(400).json({ success: false, error: 'userId is required' });
   }
   
-  try {
+try {
     // 创建用户
     const result = await createWenCaishenUser(userId);
     
@@ -778,11 +820,6 @@ app.post('/createuser', async (req, res) => {
     return res.status(500).json({ success: false, error: 'Internal server error' });
   }
 });
-
-
-
-
-
 // 配置文件上传存储
 // 第81行左右：将第二个storage变量重命名为avatarStorageConfig
 const avatarStorageConfig = multer.diskStorage({
@@ -806,101 +843,9 @@ const avatarStorageConfig = multer.diskStorage({
   }
 });
 
-// 第665行左右：更新updateUserFace接口中的multer实例创建代码
-// 添加/updateUserFace API接口
-// 创建新的multer实例使用重命名后的avatarStorageConfig
-const faceUpload = multer({ storage: avatarStorageConfig });
-// 修改/updateUserFace接口实现
-app.post('/updateUserFace', (req, res, next) => {
-// 先确保CORS头被设置
-res.setHeader('Access-Control-Allow-Origin', '*');
-res.setHeader('Access-Control-Allow-Credentials', 'true');
-next();
-}, faceUpload.single('avatar'), async (req, res) => {
-// 原有的/updateUserFace接口实现代码保持不变
-try {
-// 步骤1: 从URL查询参数中获取userId
-console.log(`[UPDATE_USER_FACE] 收到更新头像请求，开始处理`);
-const userId = req.query.userId;
-console.log(`[UPDATE_USER_FACE] 获取到userId: ${userId}`);
-    
-    // 步骤2: 验证请求参数
-    if (!userId) {
-      console.error(`[UPDATE_USER_FACE] 错误: userId参数缺失`);
-      return res.status(400).json({ success: false, error: 'userId is required as query parameter' });
-    }
-    
-    // 步骤3: 验证文件是否上传成功
-    if (!req.file) {
-      console.error(`[UPDATE_USER_FACE] 错误: 未上传头像文件，userId: ${userId}`);
-      return res.status(400).json({ success: false, error: 'No file uploaded' });
-    }
-    
-    console.log(`[UPDATE_USER_FACE] 文件上传成功，原始文件名: ${req.file.originalname}, 存储路径: ${req.file.path}`);
-    
-    // 步骤4: 确定用户目录和属性文件路径
-    const userDir = path.join(wencaishenUserInfoDir, userId);
-    const userPropFile = path.join(userDir, 'user.prop');
-    console.log(`[UPDATE_USER_FACE] 用户目录: ${userDir}, 属性文件: ${userPropFile}`);
-    
-    // 步骤5: 检查用户是否存在，如果不存在则创建
-    let userData;
-    let isNewUser = false;
-    if (fs.existsSync(userPropFile)) {
-      // 读取现有用户属性
-      console.log(`[UPDATE_USER_FACE] 用户已存在，读取用户属性文件`);
-      const data = fs.readFileSync(userPropFile, 'utf8');
-      userData = properties.parse(data);
-      console.log(`[UPDATE_USER_FACE] 成功读取用户属性，当前头像路径: ${userData.userface || '未设置'}`);
-    } else {
-      // 用户不存在，创建用户
-      console.log(`[UPDATE_USER_FACE] 用户不存在，开始创建新用户`);
-      const result = await createWenCaishenUser(userId);
-      console.log(`[UPDATE_USER_FACE] 用户创建成功: ${JSON.stringify(result)}`);
-      const data = fs.readFileSync(userPropFile, 'utf8');
-      userData = properties.parse(data);
-      isNewUser = true;
-      console.log(`[UPDATE_USER_FACE] 新用户属性已加载，默认头像路径: ${userData.userface}`);
-    }
-    
-    // 步骤6: 根据用户是否为新创建来决定是否更新头像路径
-    // 只有当用户不是新创建的时候，才更新头像路径
-    if (!isNewUser) {
-      console.log(`[UPDATE_USER_FACE] 更新用户头像路径，旧路径: ${userData.userface}`);
-      userData.userface = `/wencaishen/userinfo/${userId}/avatar.png`;
-      console.log(`[UPDATE_USER_FACE] 更新后头像路径: ${userData.userface}`);
-    } else {
-      console.log(`[UPDATE_USER_FACE] 新创建用户，保持默认头像路径: ${userData.userface}`);
-    }
-    
-    // 步骤7: 保存更新后的用户信息
-    console.log(`[UPDATE_USER_FACE] 准备保存更新后的用户信息`);
-    const data = properties.stringify(userData);
-    fs.writeFileSync(userPropFile, data, 'utf8');
-    console.log(`[UPDATE_USER_FACE] 用户信息保存成功`);
-    
-    // 步骤8: 返回成功响应
-    console.log(`[UPDATE_USER_FACE] 头像更新流程完成，最终头像路径: ${userData.userface}`);
-    return res.json({
-      success: true,
-      message: 'Avatar uploaded successfully',
-      userId: userId,
-      avatarUrl: userData.userface
-    });
-  } catch (error) {
-    console.error(`[UPDATE_USER_FACE] 处理头像更新时发生错误:`, error);
-    return res.status(500).json({ success: false, error: error.message || 'Internal server error' });
-  }
-});
-
 // 确保在启动服务器前添加静态文件服务
 app.use('/wencaishen', express.static(wencaishenDir));
 app.use('/wencaishen/userinfo', express.static(path.join(wencaishenDir, 'userinfo')));
-
-// 启动服务器
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
 
 
 // 添加/updateUser API接口
@@ -943,8 +888,8 @@ app.post('/updateUser', async (req, res) => {
       userId: userId,
       username: updatedUserData.username,
       // 确保userface字段处理正确
-      userface: updatedUserData.userface && updatedUserData.userface.trim() !== '' ? 
-                updatedUserData.userface : '/wencaishen/head.png',
+      // userface: updatedUserData.userface && updatedUserData.userface.trim() !== '' ? 
+      //           updatedUserData.userface : '/wencaishen/head.png',
       // 可以根据需要添加其他需要返回的用户属性
     };
     
@@ -966,4 +911,364 @@ app.get('/test-cors', (req, res) => {
     message: 'CORS configuration test successful',
     timestamp: new Date().toISOString()
   });
+});
+
+
+// 添加/changeUserId API接口
+app.post('/changeUserId', async (req, res) => {
+  try {
+    // 从请求体中获取oldUserId和newUserId参数
+    const { oldUserId, newUserId } = req.body;
+    
+    // 验证请求参数
+    if (!oldUserId || !newUserId) {
+      return res.status(400).json({
+        success: false,
+        error: 'Both oldUserId and newUserId are required'
+      });
+    }
+    
+    // 验证用户ID格式（简单验证，确保不为空且合理）
+    if (typeof oldUserId !== 'string' || typeof newUserId !== 'string' || 
+        oldUserId.trim() === '' || newUserId.trim() === '') {
+      return res.status(400).json({
+        success: false,
+        error: 'User IDs must be non-empty strings'
+      });
+    }
+    
+    // 定义旧用户目录和新用户目录路径
+    const oldUserDir = path.join(wencaishenUserInfoDir, oldUserId);
+    const newUserDir = path.join(wencaishenUserInfoDir, newUserId);
+    
+    // 检查旧用户是否存在（通过检查用户目录和user.prop文件）
+    const oldUserPropFile = path.join(oldUserDir, 'user.prop');
+    if (!fs.existsSync(oldUserDir) || !fs.existsSync(oldUserPropFile)) {
+      return res.status(404).json({
+        success: false,
+        error: `Old user with ID '${oldUserId}' does not exist`
+      });
+    }
+    
+    // 检查新用户ID是否已存在
+    if (fs.existsSync(newUserDir)) {
+      return res.status(409).json({
+        success: false,
+        error: `New user ID '${newUserId}' already exists`
+      });
+    }
+    
+    // 读取旧用户属性文件，准备更新必要信息
+    const userData = properties.parse(fs.readFileSync(oldUserPropFile, 'utf8'));
+    
+    // 如果用户头像路径包含旧的userId，也需要更新
+    // if (userData.userface && userData.userface.includes(oldUserId)) {
+    //   userData.userface = userData.userface.replace(oldUserId, newUserId);
+    // }
+    
+    // 保存更新后的用户属性
+    fs.writeFileSync(oldUserPropFile, properties.stringify(userData), 'utf8');
+    
+    // 执行目录重命名操作
+    fs.renameSync(oldUserDir, newUserDir);
+    
+    console.log(`[CHANGE_USER_ID] Successfully changed user ID from '${oldUserId}' to '${newUserId}'`);
+    
+    // 返回成功响应
+    return res.json({
+      success: true,
+      message: `User ID changed successfully from '${oldUserId}' to '${newUserId}'`,
+      oldUserId: oldUserId,
+      newUserId: newUserId
+    });
+  } catch (error) {
+    console.error(`[CHANGE_USER_ID] Error changing user ID:`, error);
+    return res.status(500).json({
+      success: false,
+      error: error.message || 'Internal server error'
+    });
+  }
+});
+
+
+
+
+// 修改/updateUserFace API接口
+// 移除multer中间件，直接处理base64字符串
+app.post('/updateUserFace', (req, res, next) => {
+  // 先确保CORS头被设置
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  next();
+}, async (req, res) => {
+  try {
+    // 步骤1: 从URL查询参数中获取userId
+    console.log(`[UPDATE_USER_FACE] 收到更新头像请求，开始处理`);
+    const userId = req.query.userId;
+    console.log(`[UPDATE_USER_FACE] 获取到userId: ${userId}`);
+    
+    // 步骤2: 验证请求参数
+    if (!userId) {
+      console.error(`[UPDATE_USER_FACE] 错误: userId参数缺失`);
+      return res.status(400).json({ success: false, error: 'userId is required as query parameter' });
+    }
+    
+    // 步骤3: 从请求体中获取base64字符串
+    const { avatarBase64 } = req.body;
+    if (!avatarBase64) {
+      console.error(`[UPDATE_USER_FACE] 错误: 未提供avatarBase64参数，userId: ${userId}`);
+      return res.status(400).json({ success: false, error: 'avatarBase64 parameter is required' });
+    }
+    
+    console.log(`[UPDATE_USER_FACE] 成功获取base64字符串，长度: ${avatarBase64.length}字符`);
+    
+    // 步骤4: 确定用户目录和文件路径
+    const userDir = path.join(wencaishenUserInfoDir, userId);
+    const userPropFile = path.join(userDir, 'user.prop');
+    const avatarTxtFile = path.join(userDir, 'avatar.txt'); // 新的avatar.txt文件路径
+    console.log(`[UPDATE_USER_FACE] 用户目录: ${userDir}, 属性文件: ${userPropFile}, avatar.txt文件: ${avatarTxtFile}`);
+    
+    // 步骤5: 检查用户是否存在，如果不存在则创建
+    let userData;
+    let isNewUser = false;
+    if (fs.existsSync(userPropFile)) {
+      // 读取现有用户属性
+      console.log(`[UPDATE_USER_FACE] 用户已存在，读取用户属性文件`);
+      const data = fs.readFileSync(userPropFile, 'utf8');
+      userData = properties.parse(data);
+      console.log(`[UPDATE_USER_FACE] 成功读取用户属性，当前头像路径: ${userData.userface || '未设置'}`);
+    } else {
+      // 用户不存在，创建用户
+      console.log(`[UPDATE_USER_FACE] 用户不存在，开始创建新用户`);
+      const result = await createWenCaishenUser(userId);
+      console.log(`[UPDATE_USER_FACE] 用户创建成功: ${JSON.stringify(result)}`);
+      const data = fs.readFileSync(userPropFile, 'utf8');
+      userData = properties.parse(data);
+      isNewUser = true;
+      console.log(`[UPDATE_USER_FACE] 新用户属性已加载，默认头像路径: ${userData.userface}`);
+    }
+    
+    // 步骤6: 保存base64字符串到avatar.txt文件
+    console.log(`[UPDATE_USER_FACE] 准备保存base64字符串到avatar.txt文件`);
+    fs.writeFileSync(avatarTxtFile, avatarBase64, 'utf8');
+    console.log(`[UPDATE_USER_FACE] base64字符串保存成功`);
+    
+    // 步骤7: 根据用户是否为新创建来决定是否更新头像路径
+    // 只有当用户不是新创建的时候，才更新头像路径
+    if (!isNewUser) {
+      console.log(`[UPDATE_USER_FACE] 更新用户头像路径，旧路径: ${userData.userface}`);
+      userData.userface = `/wencaishen/userinfo/${userId}/avatar.txt`; // 更新为txt文件路径
+      console.log(`[UPDATE_USER_FACE] 更新后头像路径: ${userData.userface}`);
+    } else {
+      console.log(`[UPDATE_USER_FACE] 新创建用户，保持默认头像路径: ${userData.userface}`);
+    }
+    
+    // 步骤8: 保存更新后的用户信息
+    console.log(`[UPDATE_USER_FACE] 准备保存更新后的用户信息`);
+    const data = properties.stringify(userData);
+    fs.writeFileSync(userPropFile, data, 'utf8');
+    console.log(`[UPDATE_USER_FACE] 用户信息保存成功`);
+    
+    // 步骤9: 返回成功响应
+    console.log(`[UPDATE_USER_FACE] 头像更新流程完成，最终头像路径: ${userData.userface}`);
+    return res.json({
+      success: true,
+      message: 'Avatar base64 string saved successfully',
+      userId: userId,
+      avatarUrl: userData.userface
+    });
+  } catch (error) {
+    console.error(`[UPDATE_USER_FACE] 处理头像更新时发生错误:`, error);
+    return res.status(500).json({ success: false, error: error.message || 'Internal server error' });
+  }
+});
+
+
+
+// 添加/getUserFace API接口
+app.get('/getUserFace', async (req, res) => {
+  try {
+    // 从查询参数中获取userId
+    const { userId } = req.query;
+    
+    // 验证请求参数
+    if (!userId) {
+      return res.status(400).json({
+        success: false,
+        error: 'userId is required'
+      });
+    }
+    
+    // 构建用户目录和avatar.txt文件路径
+    const userDir = path.join(wencaishenUserInfoDir, userId);
+    const avatarTxtPath = path.join(userDir, 'avatar.txt');
+    
+    // 检查avatar.txt文件是否存在
+    if (!fs.existsSync(avatarTxtPath)) {
+      return res.status(404).json({
+        success: false,
+        error: 'Avatar file not found'
+      });
+    }
+    
+    // 读取avatar.txt文件内容
+    const avatarContent = fs.readFileSync(avatarTxtPath, 'utf8');
+    
+    // 返回avatar内容
+    return res.json({
+      success: true,
+      userId: userId,
+      avatar: avatarContent
+    });
+  } catch (error) {
+    console.error('[GET_USER_FACE] Error reading avatar file:', error);
+    return res.status(500).json({
+      success: false,
+      error: error.message || 'Internal server error'
+    });
+  }
+});
+
+
+
+// 添加/addRecord API接口
+app.post('/addRecord', async (req, res) => {
+  try {
+    // 从请求体中获取所有必要参数
+    const { uid, jingzhou, type, count, timestamp } = req.body;
+    
+    // 验证请求参数
+    if (!uid || !jingzhou || !type || count === undefined || !timestamp) {
+      return res.status(400).json({
+        success: false,
+        error: 'All parameters (uid, jingzhou, type, count, timestamp) are required'
+      });
+    }
+    
+    // 验证type参数值
+    if (type !== '分钟' && type !== '遍') {
+      return res.status(400).json({
+        success: false,
+        error: 'type must be either "分钟" or "遍"'
+      });
+    }
+    
+    // 验证count参数必须为数字
+    if (isNaN(Number(count))) {
+      return res.status(400).json({
+        success: false,
+        error: 'count must be a number'
+      });
+    }
+    
+    // 构建用户目录和records.txt文件路径
+    const userDir = path.join(wencaishenUserInfoDir, uid);
+    const recordsFilePath = path.join(userDir, 'records.txt');
+    
+    // 确保用户目录存在
+    if (!fs.existsSync(userDir)) {
+      fs.mkdirSync(userDir, { recursive: true });
+      console.log(`[ADD_RECORD] Created user directory: ${userDir}`);
+    }
+    
+    // 格式化记录内容，使用"｜"作为分隔符
+    const recordLine = `${jingzhou}｜${type}｜${count}｜${timestamp}\n`;
+    
+    // 将记录追加到文件中
+    fs.appendFileSync(recordsFilePath, recordLine, 'utf8');
+    console.log(`[ADD_RECORD] Record added successfully for user: ${uid}`);
+    
+    // 返回成功响应
+    return res.json({
+      success: true,
+      message: 'Record added successfully',
+      record: {
+        uid: uid,
+        jingzhou: jingzhou,
+        type: type,
+        count: count,
+        timestamp: timestamp
+      }
+    });
+  } catch (error) {
+    console.error('[ADD_RECORD] Error adding record:', error);
+    return res.status(500).json({
+      success: false,
+      error: error.message || 'Internal server error'
+    });
+  }
+});
+
+// 添加/getRecords API接口
+app.get('/getRecords', async (req, res) => {
+  try {
+    // 从查询参数中获取uid
+    const { uid } = req.query;
+    
+    // 验证请求参数
+    if (!uid) {
+      return res.status(400).json({
+        success: false,
+        error: 'uid is required'
+      });
+    }
+    
+    // 构建用户目录和records.txt文件路径
+    const userDir = path.join(wencaishenUserInfoDir, uid);
+    const recordsFilePath = path.join(userDir, 'records.txt');
+    
+    // 检查records.txt文件是否存在
+    if (!fs.existsSync(recordsFilePath)) {
+      // 如果文件不存在，返回空数组
+      return res.json({
+        success: true,
+        records: []
+      });
+    }
+    
+    // 读取records.txt文件内容
+    const fileContent = fs.readFileSync(recordsFilePath, 'utf8');
+    
+    // 按行分割文件内容，过滤空行
+    const lines = fileContent.split('\n').filter(line => line.trim() !== '');
+    
+    // 解析每一行记录为JSON对象
+    const records = lines.map(line => {
+      // 使用"｜"作为分隔符分割每一行
+      const parts = line.split('｜');
+      
+      // 确保每一行有4个部分（jingzhou, type, count, timestamp）
+      if (parts.length === 4) {
+        return {
+          jingzhou: parts[0],
+          type: parts[1],
+          count: parseInt(parts[2], 10),
+          timestamp: parts[3]
+        };
+      }
+      
+      // 如果格式不正确，跳过该行
+      return null;
+    }).filter(record => record !== null); // 过滤掉格式不正确的记录
+    
+    // 返回记录数组
+    return res.json({
+      success: true,
+      records: records,
+      total: records.length,
+      uid: uid
+    });
+  } catch (error) {
+    console.error('[GET_RECORDS] Error reading records:', error);
+    return res.status(500).json({
+      success: false,
+      error: error.message || 'Internal server error'
+    });
+  }
+});
+
+
+// 启动服务器
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
